@@ -2,14 +2,16 @@ from typing import List
 
 
 class Solution:
-    grid: List[List[str]]
 
     def numIslands(self, grid: List[List[str]]) -> int:
+        grid: List[List[str]]
 
         def dfs(x: int, y: int):
             for dx, dy in (1, 0), (0, -1), (-1, 0), (0, 1):
                 nx = x + dx
                 ny = y + dy
+                if nx < 0 or nx >= len(grid) or ny < 0 or ny >= len(grid[0]) or grid[nx][ny] != "1":
+                    continue
                 if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]):
                     if grid[nx][ny] == "1":
                         grid[nx][ny] = "0"
