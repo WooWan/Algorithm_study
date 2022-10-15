@@ -1,23 +1,21 @@
 from typing import List
 
 
-def letterCombinations( digits: str) -> List[str]:
+def letterCombinations(digits: str) -> List[str]:
+    dic = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno",
+           "7": "pqrs", "8": "tuv", "9": "wxyz"}
+    result = []
 
-    def dfs(index, path):
-        if len(path) == len(digits):
-            result.append(path)
+    def dfs(index, curStr):
+        if len(curStr) == len(digits):
+            result.append(curStr)
             return
 
-        for i in range(index, len(digits)):
-            print(dic[digits[i]])
-            for j in dic[digits[i]]:
-                # print(i,j)
-                dfs(i+1, path+j)
-    dic = {"2": "abc", "3": "def", "4":"ghi", "5":"jkl", "6": "mno",
-           "7": "pqrs", "8":"tuv", "9": "wxyz" }
-    result =[]
-    dfs(0,"")
-    print(result)
+        for c in dic[digits[index]]:
+            dfs(index + 1, curStr + c)
+
+    if digits:
+        dfs(0, "")
     return result
 
 letterCombinations("23")
