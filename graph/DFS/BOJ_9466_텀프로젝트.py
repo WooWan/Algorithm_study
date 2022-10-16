@@ -79,7 +79,7 @@
 
 import sys
 input= sys.stdin.readline
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(10**7)
 
 t=int(input())
 def dfs(x):
@@ -98,7 +98,7 @@ def dfs(x):
     finished[x]=True
 
 
-for i in range(t):
+for _ in range(t):
     n=int(input())
     visited=[False]*(n+1)
     finished=[False]*(n+1)
