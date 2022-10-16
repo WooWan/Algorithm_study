@@ -16,6 +16,7 @@ def letterCombinations(digits: str) -> List[str]:
 
     if digits:
         dfs(0, "")
+    print(result)
     return result
 
 letterCombinations("23")
