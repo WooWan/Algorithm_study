@@ -1,23 +1,24 @@
-import collections
 from typing import List
 
 
 def canFinish(numCourses: int, prerequisites: List[List[int]]) -> bool:
     graph = [[] for _ in range(numCourses)]
-    visited = [False] * numCourses
+    visited = [False for _ in range(numCourses)]
     finished = [False] * numCourses
 
     def dfs(x):
-        if visited[x]:
-            return False
         if finished[x]:
             return True
+        if visited[x] and not finished[x]:
+            return False
         visited[x] = True
+
         for nx in graph[x]:
-                if not dfs(nx):
-                    return False
+            if not dfs(nx):
+                return False
         finished[x] = True
         return True
+
 
     for a, b in prerequisites:
         graph[a].append(b)
@@ -29,4 +30,4 @@ def canFinish(numCourses: int, prerequisites: List[List[int]]) -> bool:
     return True
 
 
-print(canFinish(2, [[0, 1], [1,0]]))
+print(canFinish(5,[[1,4],[2,4],[3,1],[3,2]]))
