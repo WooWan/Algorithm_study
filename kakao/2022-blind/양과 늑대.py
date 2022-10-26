@@ -36,9 +36,8 @@ def solution(info, edges):
         else:
             sheep += 1
             answer2.append(sheep)
-
-        for edge in edges:
-            parent, children = edge[0], edge[1]
+        for i in range(len(edges)):
+            parent, children = edges[i][0], edges[i][1]
             if visited[parent] and not visited[children]:
                 visited[children] = True
                 dfs2(children, sheep , wolf)
@@ -48,6 +47,7 @@ def solution(info, edges):
     # dfs(0, 0, 0, [])
     visited[0] = True
     dfs2(0, 0,0)
+    print(visited)
     return max(answer2)
 
 
